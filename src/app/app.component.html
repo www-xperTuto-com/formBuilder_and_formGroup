@@ -1,0 +1,39 @@
+<form [formGroup]="userForm">
+  Name: <input formControlName="name">
+  <div class="notification">
+    <span *ngIf="userForm?.get('name')?.errors?.required">
+      the name field is required
+    </span>
+  </div>
+  WebSite: <input formControlName="webSite">
+  <div class="notification">
+    <span *ngIf="userForm?.get('webSite')?.errors?.required">
+      the webSite field is required
+    </span>
+  </div>
+
+  <div formGroupName="technologie">
+    <h2>Technologies:</h2>
+    <input formControlName="front">
+    <div class="notification">
+    <span *ngIf="userForm?.get('technologie.front')?.errors?.required">
+      the front field is required
+    </span>
+    </div>
+
+    <input formControlName="back">
+    <div class="notification">
+    <span *ngIf="userForm?.get('technologie.back')?.errors?.required">
+      the back field is required
+    </span>
+    </div>
+
+    <input formControlName="mobile">
+    <div class="notification">
+    <span *ngIf="userForm?.get('technologie.mobile')?.errors?.required">
+      the mobile field is required
+    </span>
+    </div>
+  </div>
+  <button (click)="getFormData()" [disabled]="!userForm.valid">Submit</button>
+</form>
